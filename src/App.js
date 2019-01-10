@@ -13,6 +13,10 @@ import BookList from "./BookList";
 import authorStore from "./stores/AuthorStore";
 import bookStore from "./stores/BookStore";
 
+// Our Imports
+import Signup from "./forms/SignupForm";
+import Login from "./forms/LoginForm";
+
 class App extends Component {
   getView() {
     if (authorStore.loading || bookStore.loading) {
@@ -24,6 +28,8 @@ class App extends Component {
           <Route path="/authors/:authorID" component={AuthorDetail} />
           <Route path="/authors/" component={AuthorsList} />
           <Route path="/books/:bookColor?" component={BookList} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
         </Switch>
       );
     }

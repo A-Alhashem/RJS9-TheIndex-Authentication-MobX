@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { observer } from "mobx-react";
+
+// my Imports
+import AuthStore from "../stores/AuthStore";
 
 class Signup extends Component {
   constructor(props) {
@@ -21,11 +25,13 @@ class Signup extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    alert("I DON'T WORK YET");
+    AuthStore.signUp(this.state);
   }
 
   render() {
     const { username, email, password } = this.state;
+
+    if (AuthStore.user) return <Redirect to="/" />;
 
     return (
       <div className="col-6 mx-auto">
@@ -83,4 +89,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default observer(Signup);
